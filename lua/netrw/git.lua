@@ -29,7 +29,7 @@ M.status = function(path)
 	local cwd = vim.fn.getcwd()
 	local currdir = string.gsub(path, cwd .. "/?", "", 1)
 	local statuses = {}
-	parseStatus(statuses, vim.fn.systemlist("git -C " .. path .. " status --porcelain"))
+	parseStatus(statuses, vim.fn.systemlist("git -C " .. path .. " status --porcelain --untracked-files=all"))
 
 	local stats = {}
 	for k, v in pairs(statuses) do
